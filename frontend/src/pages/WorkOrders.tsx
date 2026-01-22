@@ -1,6 +1,27 @@
 import { useEffect, useState } from 'react';
-import { WorkOrder } from '../types';
 import { workOrdersApi } from '../api';
+
+type Product = {
+  id: string;
+  name: string;
+};
+
+type WorkOrder = {
+  id: string;
+  orderNumber: string;
+  productId: string;
+  product?: Product;
+  quantity: number;
+  status: string;
+  scheduledStartDate: string;
+  scheduledEndDate: string;
+  actualStartDate?: string;
+  actualEndDate?: string;
+  priority: string;
+  notes?: string;
+  createdAt: string;
+  updatedAt: string;
+};
 
 const WorkOrders = () => {
   const [workOrders, setWorkOrders] = useState<WorkOrder[]>([]);

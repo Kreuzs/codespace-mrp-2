@@ -26,7 +26,7 @@ export class InventoryController {
 
   getInventoryById = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const inventory = await this.inventoryService.getInventoryById(req.params.id);
+      const inventory = await this.inventoryService.getInventoryById(req.params.id as string);
       res.json({
         success: true,
         data: inventory,
@@ -50,7 +50,7 @@ export class InventoryController {
 
   updateInventory = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const inventory = await this.inventoryService.updateInventory(req.params.id, req.body);
+      const inventory = await this.inventoryService.updateInventory(req.params.id as string, req.body);
       res.json({
         success: true,
         data: inventory,
@@ -62,7 +62,7 @@ export class InventoryController {
 
   deleteInventory = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      await this.inventoryService.deleteInventory(req.params.id);
+      await this.inventoryService.deleteInventory(req.params.id as string);
       res.json({
         success: true,
         message: 'Inventory item deleted successfully',

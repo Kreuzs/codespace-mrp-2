@@ -21,7 +21,7 @@ export class WorkOrderController {
 
   getWorkOrderById = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const workOrder = await this.workOrderService.getWorkOrderById(req.params.id);
+      const workOrder = await this.workOrderService.getWorkOrderById(req.params.id as string);
       res.json({
         success: true,
         data: workOrder,
@@ -45,7 +45,7 @@ export class WorkOrderController {
 
   updateWorkOrder = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const workOrder = await this.workOrderService.updateWorkOrder(req.params.id, req.body);
+      const workOrder = await this.workOrderService.updateWorkOrder(req.params.id as string, req.body);
       res.json({
         success: true,
         data: workOrder,
@@ -57,7 +57,7 @@ export class WorkOrderController {
 
   deleteWorkOrder = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      await this.workOrderService.deleteWorkOrder(req.params.id);
+      await this.workOrderService.deleteWorkOrder(req.params.id as string);
       res.json({
         success: true,
         message: 'Work order deleted successfully',

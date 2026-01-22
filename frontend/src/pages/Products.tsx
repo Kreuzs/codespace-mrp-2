@@ -1,7 +1,23 @@
 import { useEffect, useState } from 'react';
-import { Product } from '../types';
 import { productsApi } from '../api';
 import Button from '../components/Button';
+
+type Product = {
+  id: string;
+  code: string;
+  name: string;
+  description?: string;
+  unit: string;
+  standardCost: number;
+  sellingPrice: number;
+  leadTimeDays: number;
+  reorderPoint: number;
+  economicOrderQuantity: number;
+  productType: string;
+  isActive: boolean;
+  createdAt: string;
+  updatedAt: string;
+};
 
 const Products = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -228,10 +244,10 @@ const Products = () => {
                     {product.unit}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    ${product.standardCost.toFixed(2)}
+                    ${Number(product.standardCost).toFixed(2)}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    ${product.sellingPrice.toFixed(2)}
+                    ${Number(product.sellingPrice).toFixed(2)}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm">
                     <button

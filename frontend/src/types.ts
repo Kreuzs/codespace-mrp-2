@@ -1,4 +1,4 @@
-export interface Product {
+type Product = {
   id: string;
   code: string;
   name: string;
@@ -13,9 +13,9 @@ export interface Product {
   isActive: boolean;
   createdAt: string;
   updatedAt: string;
-}
+};
 
-export interface WorkOrder {
+type WorkOrder = {
   id: string;
   orderNumber: string;
   productId: string;
@@ -30,9 +30,9 @@ export interface WorkOrder {
   notes?: string;
   createdAt: string;
   updatedAt: string;
-}
+};
 
-export interface InventoryItem {
+type InventoryItem = {
   id: string;
   productId: string;
   product?: Product;
@@ -44,4 +44,6 @@ export interface InventoryItem {
   lastStockDate?: string;
   createdAt: string;
   updatedAt: string;
-}
+};
+
+export type { Product, WorkOrder, InventoryItem };

@@ -18,7 +18,7 @@ export class ProductController {
 
   getProductById = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const product = await this.productService.getProductById(req.params.id);
+      const product = await this.productService.getProductById(req.params.id as string);
       res.json({
         success: true,
         data: product,
@@ -42,7 +42,7 @@ export class ProductController {
 
   updateProduct = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const product = await this.productService.updateProduct(req.params.id, req.body);
+      const product = await this.productService.updateProduct(req.params.id as string, req.body);
       res.json({
         success: true,
         data: product,
@@ -54,7 +54,7 @@ export class ProductController {
 
   deleteProduct = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      await this.productService.deleteProduct(req.params.id);
+      await this.productService.deleteProduct(req.params.id as string);
       res.json({
         success: true,
         message: 'Product deleted successfully',

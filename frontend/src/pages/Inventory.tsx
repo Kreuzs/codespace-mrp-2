@@ -1,6 +1,24 @@
 import { useEffect, useState } from 'react';
-import { InventoryItem } from '../types';
 import { inventoryApi } from '../api';
+
+type Product = {
+  id: string;
+  name: string;
+};
+
+type InventoryItem = {
+  id: string;
+  productId: string;
+  product?: Product;
+  location: string;
+  quantityOnHand: number;
+  quantityReserved: number;
+  quantityAvailable: number;
+  quantityOnOrder: number;
+  lastStockDate?: string;
+  createdAt: string;
+  updatedAt: string;
+};
 
 const Inventory = () => {
   const [inventory, setInventory] = useState<InventoryItem[]>([]);

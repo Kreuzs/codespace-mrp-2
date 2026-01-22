@@ -12,7 +12,7 @@ export const AppDataSource = new DataSource({
   username: process.env.DB_USERNAME || 'postgres',
   password: process.env.DB_PASSWORD || 'postgres',
   database: process.env.DB_DATABASE || 'mrp_system',
-  synchronize: process.env.NODE_ENV === 'development', // Auto-sync in dev only
+  synchronize: true, // Auto-sync schema
   logging: process.env.NODE_ENV === 'development',
   entities: [Product, BillOfMaterials, InventoryItem, WorkOrder, WorkOrderOperation],
   migrations: ['src/infrastructure/database/migrations/*.ts'],
@@ -23,6 +23,8 @@ export const initializeDatabase = async () => {
   try {
     await AppDataSource.initialize();
     console.log('✅ Database connection established');
+    console.log('📊 Synchronize:', AppDataSource.options.synchronize);
+    console.log('📄 Entities loaded:', AppDataSource.entityMetadatas.map(e => e.name).join(', '));
   } catch (error) {
     console.error('❌ Database connection failed:', error);
     throw error;
